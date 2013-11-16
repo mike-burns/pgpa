@@ -1,0 +1,6 @@
+<%= form_for @user do |form| %>
+  <%= form.fields_for :keys do |keys_form| %>
+    <%= keys_form.text_field :keyid %>
+  <% end %>
+  <%= form.submit 'Sign up' %>
+<% end %>

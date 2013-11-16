@@ -1,0 +1,5 @@
+<ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.primary_uid, user %></li>
+  <% end %>
+</ul>

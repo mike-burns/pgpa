@@ -1,0 +1,6 @@
+Hi <%= @name %>,
+
+You have asked to authenticate. If this is true, follow this one-time
+link to continue:
+
+<%= completer_url(@secret, host: 'localhost:3000') %>
