@@ -1,3 +1,7 @@
-<p>Scan this:</p>
+<p>Scan this using your <abbr title="Time-based One-time Password">TOTP</abbr> program:</p>
 
 <p><img src="http://chart.apis.google.com/chart?cht=qr&chs=250x250&chl=<%= CGI::escape(@uid.secret_key_uri) %>"></p>
+
+<p>Alternatively, manually enter the secret key:<p>
+
+<pre><%= @uid.secret_key %></pre>
