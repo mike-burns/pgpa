@@ -43,8 +43,8 @@ Copyright 2013 Mike Burns. Licensed under BSD license.
 
 If you think this is interesting, send me an encrypted email saying so.
 
-    Key id: 0xA1723F75AFEB61EC
-    Fingerprint: E3D8 3498 553C 7F3B 9259  776A A172 3F75 AFEB 61EC
+    Key id: 0x3E6761F72846B014
+    Fingerprint: 5FD8 2CE6 A646 3285 538F  C3A5 3E67 61F7 2846 B014
 
 Also consider donating:
 
