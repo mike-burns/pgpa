@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'openssl'
 
 class Uid < ActiveRecord::Base
   belongs_to :key
@@ -36,8 +37,17 @@ class Uid < ActiveRecord::Base
     verifier.verify(totp)
   end
 
+  def verified_passphrase?(phrase)
+    hash_passphrase(phrase) == self.hashed_passphrase
+  end
+
   def secret_key_uri
     verifier.provisioning_uri("pgpa - #{self.email}")
+  end
+
+  def passphrase=(s)
+    self.salt = generate_salt
+    self.hashed_passphrase = hash_passphrase(s)
   end
 
   private
@@ -46,8 +56,20 @@ class Uid < ActiveRecord::Base
     key.keyid + SecureRandom.urlsafe_base64(32)
   end
 
+  def generate_salt
+    SecureRandom.hex(64).encode('UTF-8')
+  end
+
   def set_secret_key
     self.secret_key = ROTP::Base32.random_base32
+  end
+
+  def hash_passphrase(s)
+    cipher = OpenSSL::Cipher::BF.new('CBC')
+    cipher.encrypt
+    cipher.key = Digest::SHA256.digest(salt)
+    cipher.update("--#{self.salt}--#{s}--")
+    CGI::escape(cipher.final)
   end
 
   def verifier

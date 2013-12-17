@@ -14,3 +14,16 @@
   <%= form.text_field :totp %>
   <%= form.submit 'Sign in' %>
 <% end %>
+
+<h2>With an insecure memorized passphrase</h2>
+
+<%= form_for :session, url: session_by_passphrases_path do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <p class="insecure-passphrase-placeholder" data-id="session_passphrase" data-name="session[passphrase]">
+    Your passphrase prompt will be here. It is rendered by JavaScript,
+    and encrypted in JavaScript before being sent to us. This requires
+    the DOMCrypt extension. We never want to see your passphrase.
+  </p>
+  <%= form.submit 'Sign in' %>
+<% end %>

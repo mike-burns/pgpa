@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216233159) do
+ActiveRecord::Schema.define(version: 20131217103656) do
 
   create_table "keys", force: true do |t|
     t.datetime "created_at"
@@ -28,10 +28,12 @@ ActiveRecord::Schema.define(version: 20131216233159) do
     t.string   "email"
     t.string   "name"
     t.string   "secret"
-    t.boolean  "revoked",    default: false, null: false
-    t.boolean  "checked",    default: false, null: false
+    t.boolean  "revoked",           default: false, null: false
+    t.boolean  "checked",           default: false, null: false
     t.integer  "user_id"
     t.string   "secret_key"
+    t.string   "salt"
+    t.string   "hashed_passphrase"
   end
 
   create_table "users", force: true do |t|

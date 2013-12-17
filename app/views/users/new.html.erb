@@ -1,5 +1,5 @@
 <h2>With PGP key</h2>
-<%= form_for @user, url: users_keys_path do |form| %>
+<%= form_for @user, url: user_keys_path do |form| %>
   <%= form.fields_for :keys do |keys_form| %>
     <%= keys_form.label :keyid %>
     <%= keys_form.text_field :keyid %>
@@ -8,10 +8,24 @@
 <% end %>
 
 <h2>With time-based one-time password</h2>
-<%= form_for @user, url: users_totps_path do |form| %>
+<%= form_for @user, url: user_totps_path do |form| %>
   <%= form.fields_for :uids do |uids_form| %>
     <%= uids_form.label :email %>
     <%= uids_form.text_field :email %>
+  <% end %>
+  <%= form.submit 'Sign up' %>
+<% end %>
+
+<h2>With an insecure memorized passphrase</h2>
+<%= form_for @user, url: user_passphrases_path do |form| %>
+  <%= form.fields_for :uids do |uids_form| %>
+    <%= uids_form.label :email %>
+    <%= uids_form.text_field :email %>
+    <p class="insecure-passphrase-placeholder" data-id="user_uids_attributes_0_passphrase" data-name="user[uids_attributes][0][passphrase]">
+      Your passphrase prompt will be here. It is rendered by JavaScript,
+      and encrypted in JavaScript before being sent to us. This requires
+      the DOMCrypt extension. We never want to see your passphrase.
+    </p>
   <% end %>
   <%= form.submit 'Sign up' %>
 <% end %>
