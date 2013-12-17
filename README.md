@@ -45,3 +45,7 @@ If you think this is interesting, send me an encrypted email saying so.
 
     Key id: 0xA1723F75AFEB61EC
     Fingerprint: E3D8 3498 553C 7F3B 9259  776A A172 3F75 AFEB 61EC
+
+Also consider donating:
+
+[1KfA9S19ozuBurdZjCNvNqmkafMQrsKkdq](bitcoin:1KfA9S19ozuBurdZjCNvNqmkafMQrsKkdq)
