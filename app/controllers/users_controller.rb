@@ -6,15 +6,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.keys.build
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      @user.begin_auth
-    else
-      render :new
-    end
+    @user.uids.build
   end
 
   def show
@@ -22,10 +14,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(keys_attributes: [ :keyid ])
-  end
 
   def current_user
     User.find(session[:user_id])

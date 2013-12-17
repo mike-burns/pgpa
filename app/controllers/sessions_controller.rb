@@ -2,13 +2,8 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create
-    @uid = Uid.find_by_email(params[:session][:email])
-    if @uid
-      @uid.begin_auth
-    else
-      @uid.errors.add(:email, 'no such uid')
-      render :new
-    end
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url
   end
 end

@@ -1,4 +1,16 @@
-<%= form_for :session, url: session_path do |form| %>
+<h2>With PGP key</h2>
+
+<%= form_for :session, url: session_by_keys_path do |form| %>
   <%= form.text_field :email %>
+  <%= form.submit 'Sign in' %>
+<% end %>
+
+<h2>With time-based one-time password</h2>
+
+<%= form_for :session, url: session_by_totps_path do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.label 'One-time password' %>
+  <%= form.text_field :totp %>
   <%= form.submit 'Sign in' %>
 <% end %>

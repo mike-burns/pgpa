@@ -1,6 +1,17 @@
-<%= form_for @user do |form| %>
+<h2>With PGP key</h2>
+<%= form_for @user, url: users_keys_path do |form| %>
   <%= form.fields_for :keys do |keys_form| %>
+    <%= keys_form.label :keyid %>
     <%= keys_form.text_field :keyid %>
+  <% end %>
+  <%= form.submit 'Sign up' %>
+<% end %>
+
+<h2>With time-based one-time password</h2>
+<%= form_for @user, url: users_totps_path do |form| %>
+  <%= form.fields_for :uids do |uids_form| %>
+    <%= uids_form.label :email %>
+    <%= uids_form.text_field :email %>
   <% end %>
   <%= form.submit 'Sign up' %>
 <% end %>
