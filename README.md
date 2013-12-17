@@ -21,7 +21,7 @@ email.
 Sign up:
 
 1. Sign up using your email address.
-2. You shown a secret key for your TOTP. Add this to your TOTP app
+2. You are shown a secret key for your TOTP. Add this to your TOTP app
    (Authy, Google Authenticator, etc.).
 
 Sign in:
