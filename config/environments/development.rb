@@ -35,3 +35,8 @@ FileUtils.chmod(0700, GNUPGHOME)
 GPGME::Engine.home_dir = GNUPGHOME
 
 SIGNER = ENV['EMAIL_SIGNER'] || 'mike@mike-burns.com'
+
+if ENV['SECRET_KEY_SOURCE']
+  system("gpg --homedir #{GNUPGHOME} --import #{ENV['SECRET_KEY_SOURCE']}")
+  ENV['SECRET_KEY_SOURCE'] = nil
+end

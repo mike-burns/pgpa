@@ -20,6 +20,8 @@ Set the following environment variables:
 
 - `PGPPATH` (or `GNUPGHOME`) - the full path to your PGP root directory.
 - `EMAIL_SIGNER` - the email address used to sign the server's keys.
+- `SECRET_KEY_SOURCE` - the absolute path to a file containing the
+  server's secret key. This is cleared after it is used.
 
 The `$PGPPATH` directory must have a keyring with, at minimum, the
 secret key for `$EMAIL_SIGNER`.
@@ -28,10 +30,11 @@ For example:
 
     export PGPPATH=/tmp/gpg-$$
     export EMAIL_SIGNER=frank@example.com
+    export SECRET_KEY_SOURCE=$PWD/secret-key.asc
 
-    rails s # will create $PGPPATH and set its permission correctly
-    
-    gpg --homedir $PGPPATH --import secret-key.asc
+    rails s
+    # creates $PGPPATH, sets its permission correctly, and imports the
+    # secret key
 
 You should also familarize yourself with
 `config/environments/development.rb`. Of note, it uses `:msmtp` to send
